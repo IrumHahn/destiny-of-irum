@@ -1,34 +1,5 @@
 import Nav from "@/components/Nav";
 import EpisodeCard from "@/components/EpisodeCard";
 import episodes from "@/data/episodes.json";
-
-export const metadata = {
-  title: "전체 에피소드 | 운명의 이룸",
-};
-
-export default function EpisodesPage() {
-  return (
-    <main className="min-h-screen pt-14">
-      <Nav />
-
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
-        {/* 헤더 */}
-        <div className="mb-14">
-          <p className="text-xs tracking-[0.3em] text-amber-500/60 uppercase mb-4">Episodes</p>
-          <h1 className="text-3xl sm:text-4xl font-black text-white mb-4">전체 에피소드</h1>
-          <p className="text-slate-500 text-sm">
-            총{" "}
-            <span className="text-amber-400 font-semibold">{episodes.length}</span>화 연재 중
-          </p>
-        </div>
-
-        {/* 에피소드 목록 */}
-        <div className="grid gap-4">
-          {[...episodes].reverse().map((ep) => (
-            <EpisodeCard key={ep.number} episode={ep} />
-          ))}
-        </div>
-      </div>
-    </main>
-  );
-}
+export const metadata = { title: "연재 목차 | 운명의 이룸" };
+export default function EpisodesPage(){return <><Nav/><main className="shell archive-page"><div className="page-intro"><p className="eyebrow">THE ARCHIVE / 001—{String(episodes.length).padStart(3,"0")}</p><h1>연재 목차</h1><p>지혜가 맥미니에서 눈을 뜬 날부터, 지금까지의 기록.</p></div><div className="archive-heading"><span>총 {episodes.length}화</span><span>최근 회차부터</span></div><div className="archive-list">{[...episodes].reverse().map(ep=><EpisodeCard key={ep.number} episode={ep}/>)}</div></main><footer className="site-footer"><div className="shell footer-inner"><span>운명의 이룸</span><span>기록은 계속된다.</span></div></footer></>}
